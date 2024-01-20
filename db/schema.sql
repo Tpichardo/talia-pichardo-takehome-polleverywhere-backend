@@ -27,3 +27,13 @@ CREATE TABLE participant (
     raffle_id INT NOT NULL,
     FOREIGN KEY (raffle_id) REFERENCES raffle (id)
 );
+
+DROP TABLE IF EXISTS winner;
+
+CREATE TABLE winner (
+    id SERIAL PRIMARY KEY,
+    raffle_id TEXT NOT NULL,
+    participant_id INT TEXT NOT NULL,
+    FOREIGN KEY (raffle_id) REFERENCES raffle(id),
+    FOREIGN KEY (participant_id) REFERENCES participant(id)
+);
