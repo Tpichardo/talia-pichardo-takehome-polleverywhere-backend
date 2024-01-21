@@ -7,7 +7,7 @@ CREATE DATABASE raffles;
 DROP TABLE IF EXISTS raffle;
 
 CREATE TABLE raffle (
-    id SERIAL PRIMARY KEY
+    id SERIAL PRIMARY KEY,
     raffle_name TEXT NOT NULL,
     secret_token TEXT NOT NULL,
     date_created TIMESTAMP NOT NULL,
@@ -25,15 +25,15 @@ CREATE TABLE participant (
     is_winner BOOLEAN DEFAULT false,
     lost BOOLEAN DEFAULT false,
     raffle_id INT NOT NULL,
-    FOREIGN KEY (raffle_id) REFERENCES raffle (id)
+    FOREIGN KEY (raffle_id) REFERENCES raffle(id)
 );
 
 DROP TABLE IF EXISTS winner;
 
 CREATE TABLE winner (
     id SERIAL PRIMARY KEY,
-    raffle_id TEXT NOT NULL,
-    participant_id INT TEXT NOT NULL,
+    raffle_id INT NOT NULL,
+    participant_id INT NOT NULL,
     FOREIGN KEY (raffle_id) REFERENCES raffle(id),
     FOREIGN KEY (participant_id) REFERENCES participant(id)
 );
