@@ -10,6 +10,6 @@ const connectionObject = {
 	user: PG_USER,
 };
 
-const database = pgp(connectionObject);
+const db = pgp(connectionObject);
 
-module.exports = database;
+module.exports = db;
