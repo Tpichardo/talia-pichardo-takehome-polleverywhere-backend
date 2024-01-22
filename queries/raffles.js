@@ -9,4 +9,13 @@ const getAllRaffles = async () => {
 	}
 };
 
-module.exports = { getAllRaffles };
+const getRaffleById = async (id) => {
+	try {
+		const raffle = await db.one("SELECT * FROM raffle WHERE id = $1", id);
+		return raffle;
+	} catch (error) {
+		return error;
+	}
+};
+
+module.exports = { getAllRaffles, getRaffleById };
