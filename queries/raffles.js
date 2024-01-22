@@ -18,4 +18,16 @@ const getRaffleById = async (id) => {
 	}
 };
 
-module.exports = { getAllRaffles, getRaffleById };
+const getAllRaffleParticipants = async (id) => {
+	try {
+		const raffleParticipants = await db.any(
+			"SELECT * FROM participant WHERE raffle_id = $1",
+			id
+		);
+		return raffleParticipants;
+	} catch (error) {
+		return error;
+	}
+};
+
+module.exports = { getAllRaffles, getRaffleById, getAllRaffleParticipants };
