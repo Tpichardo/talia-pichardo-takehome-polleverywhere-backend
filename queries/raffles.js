@@ -31,12 +31,11 @@ const getAllRaffleParticipants = async (id) => {
 };
 const createRaffle = async (newRaffle) => {
 	const { raffle_name, secret_token } = newRaffle;
-	const date = new Date();
 
 	try {
 		const raffle = await db.one(
-			"INSERT INTO raffle (raffle_name, secret_token, date_created) VALUES($1, crypt($2, gen_salt('bf')), $3) RETURNING *",
-			[raffle_name, secret_token, date]
+			"INSERT INTO raffle (raffle_name, secret_token, date_created) VALUES($1, crypt($2, gen_salt('bf')), CURRENT_TIMESTAMP) RETURNING *",
+			[raffle_name, secret_token]
 		);
 		return raffle;
 	} catch (error) {
