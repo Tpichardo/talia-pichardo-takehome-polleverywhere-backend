@@ -3,6 +3,7 @@ const {
 	getAllRaffles,
 	getRaffleById,
 	getAllRaffleParticipants,
+	createRaffle,
 } = require("../queries/raffles");
 
 const raffles = express.Router();
@@ -27,10 +28,21 @@ raffles.get("/:id", async (request, response) => {
 });
 
 raffles.get("/:id/participants", async (request, response) => {
+	const { id } = request.params;
 	try {
-		const { id } = request.params;
 		const participants = await getAllRaffleParticipants(id);
 		response.status(200).json(participants);
+	} catch (error) {
+		return error;
+	}
+});
+
+raffles.post("/", async (request, response) => {
+	try {
+		const newRaffle = await createRaffle(request.body);
+		if (newRaffle.id) {
+			response.json(newRaffle);
+		}
 	} catch (error) {
 		return error;
 	}
