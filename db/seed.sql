@@ -3,8 +3,8 @@
 INSERT INTO 
     raffle (raffle_name, secret_token, date_created)
 VALUES
-    ('Bahamas 2024', crypt('password', gen_salt('bf')), '2024-01-18 12:00:00'),
-    ('MacBook Pro', crypt('password', gen_salt('bf')), '2024-01-20 10:45:00');
+    ('Bahamas 2024 Raffle', crypt('password', gen_salt('bf')), '2024-01-18 12:00:00'),
+    ('MacBook Pro Raffle', crypt('password', gen_salt('bf')), '2024-01-20 10:45:00');
 
 INSERT INTO participant (first_name, last_name, email, phone_number, raffle_id)
 VALUES
