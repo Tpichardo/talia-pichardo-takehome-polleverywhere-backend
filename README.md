@@ -16,8 +16,6 @@ API for creating and running raffles
 
 # Project README - Getting Started
 
-Welcome to our project! Follow the steps below to get started with both the front-end and back-end components.
-
 ## Fork and Clone
 
 1. **Fork this Repo:** Click on the "Fork" button at the top right of this repository to create your own copy.
